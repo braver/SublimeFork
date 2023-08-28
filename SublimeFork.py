@@ -19,7 +19,7 @@ def find_git_root(path):
             return folder
 
 
-class GitupOpenCommand(sublime_plugin.WindowCommand):
+class ForkOpenCommand(sublime_plugin.WindowCommand):
 
     def is_enabled(self):
         return True
@@ -33,23 +33,23 @@ class GitupOpenCommand(sublime_plugin.WindowCommand):
             return find_git_root(self.window.folders()[0])
 
         else:
-            sublime.status_message('No place to open GitUp to')
+            sublime.status_message('No place to open Fork to')
             return False
 
     def run(self, *args):
-        sublime.status_message('GitUp: running')
+        sublime.status_message('Fork: running')
         path = self.get_path()
         if not path:
-            sublime.status_message('GitUp: No path')
+            sublime.status_message('Fork: No path')
             return False
         if os.path.isfile(path):
             path = os.path.dirname(path)
 
-        app_path = '/Applications/GitUp.app'
+        app_path = '/Applications/Fork.app'
         subprocess.Popen(['open', '-a', app_path, path])
 
 
-class SideBarGitupCommand(sublime_plugin.WindowCommand):
+class SideBarForkCommand(sublime_plugin.WindowCommand):
 
     def is_enabled(self, paths):
         for path in paths:
@@ -64,13 +64,13 @@ class SideBarGitupCommand(sublime_plugin.WindowCommand):
             return self.window.active_view().file_name()
 
     def run(self, paths):
-        sublime.status_message('GitUp: running')
+        sublime.status_message('Fork: running')
         path = self.get_path(paths)
         if not path:
-            sublime.status_message('GitUp: No path')
+            sublime.status_message('Fork: No path')
             return False
         if os.path.isfile(path):
             path = os.path.dirname(path)
 
-        app_path = '/Applications/GitUp.app'
+        app_path = '/Applications/Fork.app'
         subprocess.Popen(['open', '-a', app_path, path])

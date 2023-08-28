@@ -1,10 +1,10 @@
 [
 	{
-		"id": "SublimeGitUp", "caption": "-"
+		"id": "SublimeFork", "caption": "-"
 	},
 	{
-		"caption": "Open in GitUp",
-		"command": "side_bar_gitup",
+		"caption": "Open in Fork",
+		"command": "side_bar_fork",
 		"args": { "paths": [] }
 	}
 ]
